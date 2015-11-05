@@ -39,17 +39,23 @@ namespace Translator
 
         public Form1()
         {
+            //初期化
             InitializeComponent();
-            _eyeXHost = new FormsEyeXHost();
             eyeCloseCount = 0;
             BlinkCount = 0;
             eyeClose = false;
-            //フルスクリーンにする
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
 
+            
+            _eyeXHost = new FormsEyeXHost();
+
+            //フルスクリーンにする
+            /*this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            */
+            
             translatorApi = new TranslatorApi();
 
+            //Form_Load呼び出し
             Load += Form1_Load;
 
 
@@ -87,10 +93,6 @@ namespace Translator
 
             //Console.WriteLine(x + "  " + y);
 
-
-
-            
-
 		    //listBox1.Items.Add("Value=" + objAcc.get_accValue(child));
 
             Accessibility.IAccessible objAcc = default(Accessibility.IAccessible);
@@ -107,7 +109,6 @@ namespace Translator
             try
             {
                 listBox1.Items.Add("Name=" + objAcc.get_accName(child));
-                
             }catch{
 
             }
@@ -116,18 +117,27 @@ namespace Translator
 
 	    }
 
+        //見ている座標の更新
         private void OutputGazePoint(object sender, GazePointEventArgs e)
         {
             gazeX = e.X;
             gazeY = e.Y;
         }
 
+        //アイポジションの座標の更新
         private void OutputEyePosition(object sender, EyePositionEventArgs e)
         {
+            if ((int)e.LeftEye.X != 0 && (int)e.LeftEye.Y != 0 && (int)e.RightEye.X != 0 && (int)e.RightEye.Y != 0)
+            {
+                getDgree(e.LeftEye.X, e.LeftEye.Y, e.RightEye.X, e.RightEye.Y);
+            }
+            
             checkBlink(e.LeftEye.X, e.LeftEye.Y);
             
         }
 
+
+        //瞬きをしているかどうか判定
         private void checkBlink(double x, double y){
 
             if (x == 0 && y == 0)
@@ -149,14 +159,15 @@ namespace Translator
                 eyeCloseCount = 0;
             }
 
-            Console.WriteLine(BlinkCount);
+            //Console.WriteLine(BlinkCount);
 
         }
         
         
-
+        //フォームが閉じるとき
         private void Form1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            //アイホストを終了する
             _eyeXHost.Dispose();
         }
 
@@ -174,7 +185,16 @@ namespace Translator
             msgTextBox.Text += msg + "\r\n";
         }
 
+        //二点間から傾きを出す
+        private void getDgree(double x , double y , double x2 ,double y2){
+            double dx = x2-x;
+            double dy = y2 - y;
+            double radian = Math.Atan2(dy, dx);
+            double dgree = (double)(radian * 180 / Math.PI);
+            Console.WriteLine((int)dgree);
 
+            
+        }
 
 
         private void button2_Click_1(object sender, EventArgs e)
