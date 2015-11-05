@@ -1,0 +1,8 @@
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.csprojResolveAssemblyReference.cache
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Form1.resources
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Properties.Resources.resources
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.csproj.GenerateResource.Cache
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.pdb
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.exe
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.pdb

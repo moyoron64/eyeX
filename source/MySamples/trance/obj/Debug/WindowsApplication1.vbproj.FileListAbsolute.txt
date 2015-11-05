@@ -1,0 +1,31 @@
+C:\Users\s175022\Desktop\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.exe.config
+C:\Users\s175022\Desktop\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.exe
+C:\Users\s175022\Desktop\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.pdb
+C:\Users\s175022\Desktop\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.xml
+C:\Users\s175022\Desktop\WindowsApplication1\WindowsApplication1\obj\Debug\Interop.Accessibility.dll
+C:\Users\s175022\Desktop\WindowsApplication1\WindowsApplication1\obj\Debug\Interop.REMOTEPROXY6432Lib.dll
+C:\Users\s175022\Desktop\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.vbproj.ResolveComReference.cache
+C:\Users\s175022\Desktop\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.Form1.resources
+C:\Users\s175022\Desktop\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.Resources.resources
+C:\Users\s175022\Desktop\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.vbproj.GenerateResource.Cache
+C:\Users\s175022\Desktop\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.exe
+C:\Users\s175022\Desktop\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.xml
+C:\Users\s175022\Desktop\WindowsApplication1\WindowsApplication1\obj\Debug\WindowsApplication1.pdb
+C:\Users\s175022\Desktop\WindowsApplication1\WindowsApplication1\obj\Debug\Interop.AccessibilityCplAdminLib.dll
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\bin\Debug\WindowsApplication1.exe.config
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\obj\Debug\Interop.REMOTEPROXY6432Lib.dll
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\obj\Debug\WindowsApplication1.vbproj.ResolveComReference.cache
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\obj\Debug\WindowsApplication1.exe
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\obj\Debug\WindowsApplication1.xml
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\obj\Debug\WindowsApplication1.pdb
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\obj\Debug\WindowsApplication1.Form1.resources
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\obj\Debug\WindowsApplication1.Resources.resources
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\obj\Debug\WindowsApplication1.vbproj.GenerateResource.Cache
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\bin\Debug\WindowsApplication1.exe
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\bin\Debug\WindowsApplication1.pdb
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\bin\Debug\WindowsApplication1.xml
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\obj\Debug\WindowsApplication1.vbprojResolveAssemblyReference.cache
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\bin\Debug\EyeXFramework.dll
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\bin\Debug\Tobii.EyeX.Client.Net20.dll
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\bin\Debug\EyeXFramework.pdb
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MySamples\trance\bin\Debug\Tobii.EyeX.Client.Net20.xml

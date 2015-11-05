@@ -1,0 +1,10 @@
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MinimalSamples\MinimalEngineStates\bin\x86\Debug\Tobii.EyeX.Client.dll
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MinimalSamples\MinimalEngineStates\bin\x86\Debug\MinimalEngineStates.exe
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MinimalSamples\MinimalEngineStates\bin\x86\Debug\MinimalEngineStates.pdb
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MinimalSamples\MinimalEngineStates\bin\x86\Debug\EyeXFramework.dll
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MinimalSamples\MinimalEngineStates\bin\x86\Debug\Tobii.EyeX.Client.Net20.dll
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MinimalSamples\MinimalEngineStates\bin\x86\Debug\EyeXFramework.pdb
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MinimalSamples\MinimalEngineStates\bin\x86\Debug\Tobii.EyeX.Client.Net20.xml
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MinimalSamples\MinimalEngineStates\obj\x86\Debug\MinimalEngineStates.csprojResolveAssemblyReference.cache
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MinimalSamples\MinimalEngineStates\obj\x86\Debug\MinimalEngineStates.exe
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\MinimalSamples\MinimalEngineStates\obj\x86\Debug\MinimalEngineStates.pdb

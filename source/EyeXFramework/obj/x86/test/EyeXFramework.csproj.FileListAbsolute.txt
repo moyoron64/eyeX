@@ -1,0 +1,5 @@
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\EyeXFramework\bin\x86\test\EyeXFramework.dll
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\EyeXFramework\bin\x86\test\Tobii.EyeX.Client.Net20.dll
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\EyeXFramework\bin\x86\test\Tobii.EyeX.Client.Net20.xml
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\EyeXFramework\obj\x86\test\EyeXFramework.csprojResolveAssemblyReference.cache
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\EyeXFramework\obj\x86\test\EyeXFramework.dll

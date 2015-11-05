@@ -1,0 +1,15 @@
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\bin\x86\Debug\Tobii.EyeX.Client.dll
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\bin\x86\Debug\Images\not-present.png
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\bin\x86\Debug\Images\present.png
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\bin\x86\Debug\UserPresenceForms.exe
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\bin\x86\Debug\UserPresenceForms.pdb
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\bin\x86\Debug\EyeXFramework.dll
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\bin\x86\Debug\Tobii.EyeX.Client.Net20.dll
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\bin\x86\Debug\EyeXFramework.pdb
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\bin\x86\Debug\Tobii.EyeX.Client.Net20.xml
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\obj\x86\Debug\UserPresenceForms.csprojResolveAssemblyReference.cache
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\obj\x86\Debug\UserPresenceForms.UserPresenceForm.resources
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\obj\x86\Debug\UserPresenceForms.Properties.Resources.resources
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\obj\x86\Debug\UserPresenceForms.csproj.GenerateResource.Cache
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\obj\x86\Debug\UserPresenceForms.exe
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\FormsSamples\UserPresenceForms\obj\x86\Debug\UserPresenceForms.pdb
