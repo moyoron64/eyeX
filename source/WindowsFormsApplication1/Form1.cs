@@ -49,9 +49,9 @@ namespace Translator
             _eyeXHost = new FormsEyeXHost();
 
             //フルスクリーンにする
-            /*this.FormBorderStyle = FormBorderStyle.None;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
-            */
+            
             
             translatorApi = new TranslatorApi();
 
@@ -100,7 +100,7 @@ namespace Translator
             object child = null;
             AccessibleObjectFromPoint((int)gazeX,(int)gazeY, ref objAcc, ref child);
 
-            listBox1.Items.Clear();
+            //listBox1.Items.Clear();
             // ERROR: Not supported in C#: OnErrorStatement
 
             int[] ltwh = new int[4];
@@ -108,13 +108,19 @@ namespace Translator
 
             try
             {
-                listBox1.Items.Add("Name=" + objAcc.get_accName(child));
+                //listBox1.Items.Add("Name=" + objAcc.get_accName(child));
             }catch{
 
             }
+            try
+            {
 
-            //backgroundWorker1.RunWorkerAsync(objAcc.get_accName(child));
+                backgroundWorker1.RunWorkerAsync(objAcc.get_accName(child));
+            }
+            catch
+            {
 
+            }
 	    }
 
         //見ている座標の更新
@@ -122,16 +128,24 @@ namespace Translator
         {
             gazeX = e.X;
             gazeY = e.Y;
+            double x3 = listBox1.Location.X;
+            double y3 = listBox1.Location.Y;
+            x3 += (e.X * 0.08)　- (0.08 * x3);
+            y3 += (e.Y * 0.08) - (0.08 * y3)+5;
+
+            listBox1.Location = new Point((int)(x3) ,(int)(y3));
         }
 
         //アイポジションの座標の更新
         private void OutputEyePosition(object sender, EyePositionEventArgs e)
         {
+            //両方の目の位置が把握できているときに傾きをだす
             if ((int)e.LeftEye.X != 0 && (int)e.LeftEye.Y != 0 && (int)e.RightEye.X != 0 && (int)e.RightEye.Y != 0)
             {
                 getDgree(e.LeftEye.X, e.LeftEye.Y, e.RightEye.X, e.RightEye.Y);
             }
             
+            //瞬きの回数を確認する
             checkBlink(e.LeftEye.X, e.LeftEye.Y);
             
         }
@@ -185,14 +199,17 @@ namespace Translator
             msgTextBox.Text += msg + "\r\n";
         }
 
+
+
         //二点間から傾きを出す
         private void getDgree(double x , double y , double x2 ,double y2){
+            
             double dx = x2-x;
             double dy = y2 - y;
             double radian = Math.Atan2(dy, dx);
             double dgree = (double)(radian * 180 / Math.PI);
-            Console.WriteLine((int)dgree);
-
+            double dgreeAbs = System.Math.Abs(dgree);
+            //Console.WriteLine((int)dgreeAbs);
             
         }
 
@@ -221,6 +238,8 @@ namespace Translator
             if (e.Error == null)
             {
                 outTextBox.Text = (string)e.Result;
+                listBox1.Items.Clear();
+                listBox1.Items.Add((string)e.Result);
             }
             else
             {

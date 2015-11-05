@@ -47,8 +47,8 @@ namespace Translator
         private string TranslateMethod(string authToken, string text)
         {
             string translation = string.Empty;
-            string from = "ja";
-            string to = "en";
+            string from = "en";
+            string to = "ja";
 
             string uri = "http://api.microsofttranslator.com/v2/Http.svc/Translate?text="
                 + System.Web.HttpUtility.UrlEncode(text) + "&from=" + from + "&to=" + to;
