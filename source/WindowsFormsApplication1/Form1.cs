@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 using System.Runtime.InteropServices;
 using EyeXFramework;
 using Tobii.EyeX.Framework;
@@ -30,6 +29,11 @@ namespace Translator
         private EyePositionDataStream stream2;
 
         private TranslatorApi translatorApi;
+
+        //Excel.ApplicationClass oExcel = new Excel.ApplicationClass();
+        //WorkBookオブジェクト
+        //Excel.WorkbookClass oBook = default(Excel.WorkbookClass);
+        //Excel.Worksheet oSheet = default(Excel.Worksheet); 
 
 
         
@@ -128,12 +132,22 @@ namespace Translator
         {
             gazeX = e.X;
             gazeY = e.Y;
+            
             double x3 = listBox1.Location.X;
             double y3 = listBox1.Location.Y;
-            x3 += (e.X * 0.08)　- (0.08 * x3);
-            y3 += (e.Y * 0.08) - (0.08 * y3)+5;
 
-            listBox1.Location = new Point((int)(x3) ,(int)(y3));
+            if (System.Math.Abs(listBox1.Location.X - gazeX) > 20  )
+            {
+                x3 += (e.X * 0.1) - (0.1 * x3);
+
+            }
+            if(System.Math.Abs(listBox1.Location.Y - gazeY) > 25){
+                y3 += (e.Y * 0.1) - (0.1 * y3) + 7;
+
+            }
+                listBox1.Location = new Point((int)(x3), (int)(y3));
+
+
         }
 
         //アイポジションの座標の更新
@@ -196,7 +210,7 @@ namespace Translator
 
         private void AddMsg(string msg)
         {
-            msgTextBox.Text += msg + "\r\n";
+            //msgTextBox.Text += msg + "\r\n";
         }
 
 
@@ -209,7 +223,7 @@ namespace Translator
             double radian = Math.Atan2(dy, dx);
             double dgree = (double)(radian * 180 / Math.PI);
             double dgreeAbs = System.Math.Abs(dgree);
-            //Console.WriteLine((int)dgreeAbs);
+            Console.WriteLine((int)dgreeAbs);
             
         }
 
@@ -223,7 +237,7 @@ namespace Translator
                 return;
             }
 
-            button2.Enabled = false;
+            //button2.Enabled = false;
             AddMsg("翻訳開始");
         }
 
@@ -237,13 +251,13 @@ namespace Translator
         {
             if (e.Error == null)
             {
-                outTextBox.Text = (string)e.Result;
+                //outTextBox.Text = (string)e.Result;
                 listBox1.Items.Clear();
                 listBox1.Items.Add((string)e.Result);
             }
             else
             {
-                outTextBox.Text = string.Empty;
+                //outTextBox.Text = string.Empty;
                 AddMsg(e.Error.Message);
             }
             AddMsg("翻訳終了");
@@ -253,16 +267,3 @@ namespace Translator
        
     }
 }
-
-
-
-
-
-
-	
-
-	
-	
-
-
-
