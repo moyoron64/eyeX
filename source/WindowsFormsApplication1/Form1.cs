@@ -82,6 +82,9 @@ namespace Translator
 
         private void timer1_Tick_1(object sender, System.EventArgs e)
 	    {
+            Console.WriteLine("時間だああああああああ");
+
+            
 		    //int[] xy = new int[2];
 
 		    //GetCursorPos(ref xy(0));
@@ -161,6 +164,8 @@ namespace Translator
             
             //瞬きの回数を確認する
             checkBlink(e.LeftEye.X, e.LeftEye.Y);
+            Console.WriteLine(BlinkCount);
+
             
         }
 
@@ -223,7 +228,7 @@ namespace Translator
             double radian = Math.Atan2(dy, dx);
             double dgree = (double)(radian * 180 / Math.PI);
             double dgreeAbs = System.Math.Abs(dgree);
-            Console.WriteLine((int)dgreeAbs);
+//            Console.WriteLine((int)dgreeAbs);
             
         }
 
