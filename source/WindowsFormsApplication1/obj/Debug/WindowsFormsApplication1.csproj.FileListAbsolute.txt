@@ -1,5 +1,4 @@
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
-C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\obj\Debug\Interop.REMOTEPROXY6432Lib.dll
@@ -7,7 +6,6 @@ C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsAppl
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\bin\Debug\Tobii.EyeX.Client.dll
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.manifest
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
-C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\bin\Debug\EyeXFramework.dll
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\bin\Debug\MinimalGazeDataStream.exe
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\bin\Debug\Tobii.EyeX.Client.Net20.dll
@@ -16,7 +14,7 @@ C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsAppl
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\bin\Debug\Tobii.EyeX.Client.Net20.xml
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe.manifest
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
-C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\bin\Debug\MinimalGazeDataStream.vshost.exe
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\obj\Debug\Translator.Form1.resources
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\obj\Debug\Translator.Form2.resources
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\obj\Debug\Translator.Properties.Resources.resources

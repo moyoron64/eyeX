@@ -12,6 +12,8 @@ using System.Runtime.InteropServices;
 using EyeXFramework;
 using Tobii.EyeX.Framework;
 using EyeXFramework.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
 
 namespace Translator
 {
@@ -24,16 +26,15 @@ namespace Translator
         private int eyeCloseCount;
         private int BlinkCount;
         private bool eyeClose;
-        
+        private double dgree;
+        private double distance;
+ 
         private GazePointDataStream stream;
         private EyePositionDataStream stream2;
 
         private TranslatorApi translatorApi;
 
-        //Excel.ApplicationClass oExcel = new Excel.ApplicationClass();
-        //WorkBookオブジェクト
-        //Excel.WorkbookClass oBook = default(Excel.WorkbookClass);
-        //Excel.Worksheet oSheet = default(Excel.Worksheet); 
+       
 
 
         
@@ -46,7 +47,10 @@ namespace Translator
             //初期化
             InitializeComponent();
             eyeCloseCount = 0;
+            dgree = 0;
             BlinkCount = 0;
+            distance = 0;
+ 
             eyeClose = false;
 
             
@@ -71,18 +75,21 @@ namespace Translator
 	    {
 		    timer1.Interval = 25;
 		    timer1.Enabled = true;
+            timer2.Interval = 20000;
+            timer2.Enabled = true;
             webBrowser1.Navigate("http://com.center.wakayama-u.ac.jp/~s175022/englishTest.html");
             _eyeXHost.Start();
             stream = _eyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
             stream2 = _eyeXHost.CreateEyePositionDataStream();
             stream.Next += OutputGazePoint;
             stream2.Next += OutputEyePosition;
+
+
         }
 
 
         private void timer1_Tick_1(object sender, System.EventArgs e)
 	    {
-            Console.WriteLine("時間だああああああああ");
 
             
 		    //int[] xy = new int[2];
@@ -144,11 +151,12 @@ namespace Translator
                 x3 += (e.X * 0.1) - (0.1 * x3);
 
             }
-            if(System.Math.Abs(listBox1.Location.Y - gazeY) > 25){
-                y3 += (e.Y * 0.1) - (0.1 * y3) + 7;
+            if(System.Math.Abs(listBox1.Location.Y - gazeY) > 20){
+                y3 += (e.Y * 0.1) - (0.1 * y3) + 5;
 
             }
                 listBox1.Location = new Point((int)(x3), (int)(y3));
+                label2.Location = new Point((int)gazeX,(int)gazeY);
 
 
         }
@@ -164,7 +172,9 @@ namespace Translator
             
             //瞬きの回数を確認する
             checkBlink(e.LeftEye.X, e.LeftEye.Y);
-            Console.WriteLine(BlinkCount);
+            //Console.WriteLine(BlinkCount);
+
+            if(e.LeftEye.Z != 0)distance = (double)e.LeftEye.Z;
 
             
         }
@@ -226,11 +236,12 @@ namespace Translator
             double dx = x2-x;
             double dy = y2 - y;
             double radian = Math.Atan2(dy, dx);
-            double dgree = (double)(radian * 180 / Math.PI);
+            dgree = (double)(radian * 180 / Math.PI);
             double dgreeAbs = System.Math.Abs(dgree);
-//            Console.WriteLine((int)dgreeAbs);
+            //Console.WriteLine(dgree);
             
         }
+
 
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -267,6 +278,38 @@ namespace Translator
             }
             AddMsg("翻訳終了");
             button1.Enabled = true;
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            BlinkUpdate();
+
+        }
+
+
+        //瞬きの値表示更新
+        public void BlinkUpdate()
+        {
+            listBox2.Items.Clear();
+            listBox2.Items.Add("瞬き  " + BlinkCount*3  + "　回/分");
+            listBox2.Items.Add("首の傾き" + (int)dgree + "");
+            listBox2.Items.Add("画面距離" + (int)distance + "");
+            BlinkCount = 0;
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
        
