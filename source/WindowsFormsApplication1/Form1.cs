@@ -28,11 +28,24 @@ namespace Translator
         private bool eyeClose;
         private double dgree;
         private double distance;
+        private int preBlinkCount;
+
+        Label workLabel = null;
  
         private GazePointDataStream stream;
         private EyePositionDataStream stream2;
 
         private TranslatorApi translatorApi;
+
+
+        private double firstDistance;
+        private double firstDgree;
+        private int firstBlink;
+
+        private bool blinkFirstFlag = false;
+
+        private int sameWord = 0;
+        private String preWord = "";
 
        
 
@@ -50,8 +63,20 @@ namespace Translator
             dgree = 0;
             BlinkCount = 0;
             distance = 0;
+
+            firstBlink = 20;
  
             eyeClose = false;
+
+            //初期設定
+            firstDistance =600 ;
+            firstDgree= 0;
+            firstBlink = 21;
+
+            listBox3.Items.Clear();
+            listBox3.Items.Add("瞬き  " + firstBlink  + "　回/分");
+            listBox3.Items.Add("首の傾き　" + firstDgree + "　度");
+            listBox3.Items.Add("画面距離　" + firstDistance + "　mm");
 
             
             _eyeXHost = new FormsEyeXHost();
@@ -84,6 +109,8 @@ namespace Translator
             stream.Next += OutputGazePoint;
             stream2.Next += OutputEyePosition;
 
+            
+
 
         }
 
@@ -91,6 +118,7 @@ namespace Translator
         private void timer1_Tick_1(object sender, System.EventArgs e)
 	    {
 
+            listUpdate();
             
 		    //int[] xy = new int[2];
 
@@ -126,15 +154,37 @@ namespace Translator
             }catch{
 
             }
+
+
             try
             {
+                Console.WriteLine(objAcc.get_accName(child));
 
-                backgroundWorker1.RunWorkerAsync(objAcc.get_accName(child));
+
+                if (!(preWord.Equals(objAcc.get_accName(child))))
+                {
+                    if (!(objAcc.get_accName(child).Equals("Form1")))
+                    {
+                        preWord = objAcc.get_accName(child);
+                        sameWord = 0;
+                    }
+
+                }
+                else
+                {
+                    sameWord++;
+                    if (sameWord == 5)
+                    {
+                        backgroundWorker1.RunWorkerAsync(objAcc.get_accName(child));
+                    }
+                }
             }
             catch
             {
 
             }
+
+            
 	    }
 
         //見ている座標の更新
@@ -148,15 +198,14 @@ namespace Translator
 
             if (System.Math.Abs(listBox1.Location.X - gazeX) > 20  )
             {
-                x3 += (e.X * 0.1) - (0.1 * x3);
+                x3 += (e.X * 0.08) - (0.08 * x3);
 
             }
             if(System.Math.Abs(listBox1.Location.Y - gazeY) > 20){
-                y3 += (e.Y * 0.1) - (0.1 * y3) + 5;
+                y3 += (e.Y * 0.08) - (0.08 * y3) + 5;
 
             }
                 listBox1.Location = new Point((int)(x3), (int)(y3));
-                label2.Location = new Point((int)gazeX,(int)gazeY);
 
 
         }
@@ -186,7 +235,7 @@ namespace Translator
             if (x == 0 && y == 0)
             {
                 eyeCloseCount += 1;
-                if (eyeCloseCount == 7)
+                if (eyeCloseCount == 8)
                 {
                     eyeClose = true;
                 }
@@ -284,6 +333,14 @@ namespace Translator
         {
             BlinkUpdate();
 
+
+
+        }
+
+        private void translate()
+        {
+
+
         }
 
 
@@ -291,10 +348,30 @@ namespace Translator
         public void BlinkUpdate()
         {
             listBox2.Items.Clear();
-            listBox2.Items.Add("瞬き  " + BlinkCount*3  + "　回/分");
-            listBox2.Items.Add("首の傾き" + (int)dgree + "");
-            listBox2.Items.Add("画面距離" + (int)distance + "");
+            listBox2.Items.Add("瞬き  " + BlinkCount * 3 + "　回/分");
+            listBox2.Items.Add("首の傾き" + (int)dgree + "　度");
+            listBox2.Items.Add("画面距離" + (int)distance + "　mm");
+            preBlinkCount = BlinkCount;
+            blinkFirstFlag = true;
             BlinkCount = 0;
+        }
+
+        //リストの更新
+        public void listUpdate()
+        {
+            
+            listBox2.Items.Clear();
+
+            listBox2.Items.Add("瞬き  " + preBlinkCount * 3 + "　回/分");
+            if (blinkFirstFlag == false)
+            {
+                listBox2.Items.Clear();
+                listBox2.Items.Add("瞬き  " + "＊" + "　回/分");
+            }
+
+            listBox2.Items.Add("首の傾き　" + (int)dgree + "　度");
+            listBox2.Items.Add("画面距離　" + (int)distance + "　mm");
+
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -308,6 +385,11 @@ namespace Translator
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox2_DrawItem(object sender, DrawItemEventArgs e)
         {
 
         }
