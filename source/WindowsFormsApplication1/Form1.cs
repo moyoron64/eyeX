@@ -14,6 +14,9 @@ using Tobii.EyeX.Framework;
 using EyeXFramework.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
+using Microsoft.Office.Interop.Excel;
+using System.Collections.Generic;
+using MathNet.Numerics.Statistics;
 
 namespace Translator
 {
@@ -30,7 +33,7 @@ namespace Translator
         private double distance;
         private int preBlinkCount;
 
-        Label workLabel = null;
+        private System.Windows.Forms.Label workLabel = null;
  
         private GazePointDataStream stream;
         private EyePositionDataStream stream2;
@@ -46,6 +49,28 @@ namespace Translator
 
         private int sameWord = 0;
         private String preWord = "";
+        private int excelCount = 1;
+        private int blinkCheckInt;
+        private double[] dgreeStock =new double[600];
+        private int dgreeStockCount = 0;
+        private double dangerDgree = 0;
+        private double[] distanceStock = new double[600];
+        private int distanceStockCount = 0;
+        private double dangerDistance = 0;
+
+        private int blinkMydDanger = 0 ;
+        private int dgreeMydDanger = 0 ;
+        private int distanceMydDanger = 0 ;
+
+        private int allDanger = 0;
+
+        private String[] wordBox ={"Vitamin","C","plays","an","important","role","in","keeping","us","healthy.","Most","mammals","produce","it","in","their","livers,","so","they","never","suffer","from","a","lack","of","it.","Curiously,","however,","some","mammals,","such","as","humans","and","apes,","cannot","do","so.","What","happens","when","you","lack","this","important","vitamin?","You","might","see","blac-and-blue","marks","on","your","skin.","You","teeth","could","suffer,","too:","the","pink","area","around","them","might","become","soft","and","bleed","easily.","These","are","just","a","couple","of","good","reasons","to","eat","plenty","of","fresh","fruit."};
+        private String[] wordChangeBox = { "ビタミン", "C", "働く", "ひとつの", "重要な", "役割", "の中で", "保つ", "私達", "健康", "ほとんどの", "哺乳類", "作る", "それ", "のなかで", "それらの", "肝臓", "だから", "それらは", "決してない", "引き起こす", "から", "ひとつの", "不足", "～の", "それ", "奇妙なことに", "しかし", "いくらかの", "哺乳類は", "その", "ような", "人間", "そして", "類人猿", "できない", "する", "そのように", "何が", "起きる", "～とき", "あなたが", "不足する", "この", "重要な", "ビタミン", "あなたは", "かもしれない", "みる", "黒と青", "あざ", "～で", "あなたの", "肌", "あなたの", "歯", "かもしれない", "害をうける", "～も", "（冠詞）", "ピンク", "場所", "周辺", "それら", "かもしれない", "＝になる", "やわらかく", "そして", "出血する", "簡単に", "それらが", "～です", "ただ", "一組の", "二つ", "～の", "正当な", "理由", "～のため", "食べる", "たくさん", "～の", "新鮮な", "果実" };
+
+        Worksheet ws1;
+        Workbook wb;
+        Microsoft.Office.Interop.Excel.Application ExcelApp;
+        
 
        
 
@@ -88,6 +113,34 @@ namespace Translator
             
             translatorApi = new TranslatorApi();
 
+
+            string ExcelBookFileName = "test2";
+
+            ExcelApp
+              = new Microsoft.Office.Interop.Excel.Application();
+            ExcelApp.Visible = false;
+            wb = ExcelApp.Workbooks.Add();
+
+            ws1 = wb.Sheets[1];
+            ws1.Select(Type.Missing);
+
+            Range rgn = ws1.Cells[excelCount, 1];
+            rgn.Value2 = "瞬目率";
+            rgn = ws1.Cells[excelCount, 2];
+            rgn.Value2 = "首の傾き";
+            rgn = ws1.Cells[excelCount, 3];
+            rgn.Value2 = "画面距離";
+
+
+            this.listBox2.Visible = false;
+            this.listBox3.Visible = false;
+            this.label3.Visible = false;
+            this.label1.Visible = false;
+            this.listBox1.Visible = false;                
+
+            
+
+
             //Form_Load呼び出し
             Load += Form1_Load;
 
@@ -100,9 +153,9 @@ namespace Translator
 	    {
 		    timer1.Interval = 25;
 		    timer1.Enabled = true;
-            timer2.Interval = 20000;
+            timer2.Interval = 10000;
             timer2.Enabled = true;
-            webBrowser1.Navigate("http://com.center.wakayama-u.ac.jp/~s175022/englishTest.html");
+            webBrowser1.Navigate("http://com.center.wakayama-u.ac.jp/~s175022/englishTest10.html");
             _eyeXHost.Start();
             stream = _eyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
             stream2 = _eyeXHost.CreateEyePositionDataStream();
@@ -118,7 +171,7 @@ namespace Translator
         private void timer1_Tick_1(object sender, System.EventArgs e)
 	    {
 
-            listUpdate();
+
             
 		    //int[] xy = new int[2];
 
@@ -155,15 +208,21 @@ namespace Translator
 
             }
 
+           
 
+
+            //label貼り付け
             try
             {
-                Console.WriteLine(objAcc.get_accName(child));
+                //Console.WriteLine(objAcc.get_accName(child));
+
+                listUpdate(objAcc.get_accName(child));
+
 
 
                 if (!(preWord.Equals(objAcc.get_accName(child))))
                 {
-                    if (!(objAcc.get_accName(child).Equals("Form1")))
+                    if (!((objAcc.get_accName(child).Equals("Form1"))||(objAcc.get_accName(child).Equals(" "))))
                     {
                         preWord = objAcc.get_accName(child);
                         sameWord = 0;
@@ -172,10 +231,47 @@ namespace Translator
                 }
                 else
                 {
-                    sameWord++;
-                    if (sameWord == 5)
+                    if (!((objAcc.get_accName(child).Equals("Form1")) && (objAcc.get_accName(child).Equals(" ")&& (objAcc.get_accName(child).Equals("")))))
                     {
-                        backgroundWorker1.RunWorkerAsync(objAcc.get_accName(child));
+                        sameWord++;
+                        if (sameWord == 16 - (allDanger))
+                        {
+
+                            //ラベルの生成
+                            List<System.Windows.Forms.TextBox> clist = new List<System.Windows.Forms.TextBox>();
+
+                            System.Windows.Forms.TextBox tb = new System.Windows.Forms.TextBox();
+                            tb.Top = (int)gazeY+21;
+                            tb.Left = (int)gazeX;
+                            tb.Height = 10;
+                            tb.Width = 60;
+                            this.Controls.Add(tb);
+
+                            
+
+
+                            for (int i = 0; i <= wordBox.Length; i++)
+                            {
+                                if (objAcc.get_accName(child).Equals(wordBox[i]))
+                                {
+                                    //最前面へ
+                                    tb.BringToFront();
+                                    clist.Add(tb);
+                                    
+                                    tb.Text = wordChangeBox[i];
+                                    wordBox[i] = "blank";
+
+
+                                }
+                            }
+
+                            //if (tb.Text.Equals("")) return;
+                            tb.BackColor = Color.Red;
+
+                            //翻訳開始
+                            //backgroundWorker1.RunWorkerAsync(objAcc.get_accName(child));
+
+                        }
                     }
                 }
             }
@@ -190,9 +286,11 @@ namespace Translator
         //見ている座標の更新
         private void OutputGazePoint(object sender, GazePointEventArgs e)
         {
+
+
             gazeX = e.X;
             gazeY = e.Y;
-            
+            /*
             double x3 = listBox1.Location.X;
             double y3 = listBox1.Location.Y;
 
@@ -205,8 +303,8 @@ namespace Translator
                 y3 += (e.Y * 0.08) - (0.08 * y3) + 5;
 
             }
-                listBox1.Location = new Point((int)(x3), (int)(y3));
-
+                listBox1.Location = new System.Drawing.Point((int)(x3), (int)(y3));
+            */
 
         }
 
@@ -223,8 +321,19 @@ namespace Translator
             checkBlink(e.LeftEye.X, e.LeftEye.Y);
             //Console.WriteLine(BlinkCount);
 
-            if(e.LeftEye.Z != 0)distance = (double)e.LeftEye.Z;
+            if (e.LeftEye.Z != 0)
+            {
+                distance = (double)e.LeftEye.Z;
+                distanceStock[distanceStockCount] = distance;
+                distanceStockCount++;
 
+                if (distanceStockCount >= 600)
+                {
+                    distanceStockCount = 0;
+                    dangerDistance = distanceStock.PopulationVariance();
+                }
+
+            }
             
         }
 
@@ -234,6 +343,8 @@ namespace Translator
 
             if (x == 0 && y == 0)
             {
+                blinkCheckInt = 1;
+
                 eyeCloseCount += 1;
                 if (eyeCloseCount == 8)
                 {
@@ -243,10 +354,16 @@ namespace Translator
             }
             else
             {
+                blinkCheckInt = 0;
+
                 if (eyeClose == true)
                 {
+                    if (eyeCloseCount <= 14)
+                    {
+                        BlinkCount += 1;
+                        blinkCheckInt = 2;
+                    }
                     eyeClose = false;
-                    BlinkCount += 1;
                 }
                 eyeCloseCount = 0;
             }
@@ -257,7 +374,7 @@ namespace Translator
         
         
         //フォームが閉じるとき
-        private void Form1_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             //アイホストを終了する
             _eyeXHost.Dispose();
@@ -285,7 +402,18 @@ namespace Translator
             double dx = x2-x;
             double dy = y2 - y;
             double radian = Math.Atan2(dy, dx);
-            dgree = (double)(radian * 180 / Math.PI);
+            dgree = radian;
+            dgreeStock[dgreeStockCount] = radian;
+            dgreeStockCount++;
+
+            if (dgreeStockCount >= 600)
+            {
+                dgreeStockCount = 0;
+                dangerDgree = dgreeStock.PopulationVariance();
+            }
+
+            //dgree = (double)(radian * 180 / Math.PI);
+
             double dgreeAbs = System.Math.Abs(dgree);
             //Console.WriteLine(dgree);
             
@@ -332,9 +460,6 @@ namespace Translator
         private void timer2_Tick(object sender, EventArgs e)
         {
             BlinkUpdate();
-
-
-
         }
 
         private void translate()
@@ -357,7 +482,7 @@ namespace Translator
         }
 
         //リストの更新
-        public void listUpdate()
+        public void listUpdate(String word)
         {
             
             listBox2.Items.Clear();
@@ -371,6 +496,61 @@ namespace Translator
 
             listBox2.Items.Add("首の傾き　" + (int)dgree + "　度");
             listBox2.Items.Add("画面距離　" + (int)distance + "　mm");
+
+
+
+            distanceMydDanger = 0;
+            if(dangerDistance > 100)  distanceMydDanger = 1;
+            if (dangerDistance > 250) distanceMydDanger = 2;
+
+            dgreeMydDanger = 0;
+            if (dangerDgree > 0.0005) dgreeMydDanger = 1;
+            if (dangerDgree > 0.001) dgreeMydDanger = 2;
+
+            blinkMydDanger = 0;
+            if (preBlinkCount > 3) blinkMydDanger = 1;
+            if (preBlinkCount > 4) blinkMydDanger = 2;
+
+            allDanger = distanceMydDanger + dgreeMydDanger + blinkMydDanger;
+
+
+            //excel書き出し
+            try
+            {
+                excelCount++;
+                Range rgn = ws1.Cells[excelCount, 1];
+                rgn.Value2 = preBlinkCount * 3;
+                rgn = ws1.Cells[excelCount, 2];
+                rgn.Value2 = dgree;
+                rgn = ws1.Cells[excelCount, 3];
+                rgn.Value2 = distance;
+                rgn = ws1.Cells[excelCount, 4];
+                rgn.Value2 = word;
+                rgn = ws1.Cells[excelCount, 5];
+                rgn.Value2 = blinkCheckInt;
+                rgn = ws1.Cells[excelCount, 6];
+                rgn.Value2 = GetUnixTime(DateTime.Now);
+                rgn = ws1.Cells[excelCount, 7];
+                rgn.Value2 = gazeX;
+                rgn = ws1.Cells[excelCount, 8];
+                rgn.Value2 = gazeY;
+                rgn = ws1.Cells[excelCount, 9];
+                rgn.Value2 = allDanger;
+                rgn = ws1.Cells[excelCount, 10];
+                rgn.Value2 = blinkMydDanger;
+                rgn = ws1.Cells[excelCount, 11];
+                rgn.Value2 = dgreeMydDanger;
+                rgn = ws1.Cells[excelCount, 12];
+                rgn.Value2 = distanceMydDanger;
+                rgn = ws1.Cells[excelCount, 13];
+                rgn.Value2 = dangerDgree;
+                rgn = ws1.Cells[excelCount, 14];
+                rgn.Value2 = dangerDistance;
+            }
+            catch
+            {
+
+            }
 
         }
 
@@ -392,6 +572,32 @@ namespace Translator
         private void listBox2_DrawItem(object sender, DrawItemEventArgs e)
         {
 
+        }
+
+        private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+
+            wb.SaveAs("test1");
+            wb.Close(false);
+            ExcelApp.Quit();
+
+            Console.WriteLine("保存しました");
+        }
+
+        // UNIXエポックを表すDateTimeオブジェクトを取得
+        private static DateTime UNIX_EPOCH =   DateTime.Now;
+
+        public static long GetUnixTime(DateTime targetTime)
+        {
+            // UTC時間に変換
+            targetTime = targetTime.ToUniversalTime();
+            UNIX_EPOCH = UNIX_EPOCH.ToUniversalTime();
+         
+            // UNIXエポックからの経過時間を取得
+            TimeSpan elapsedTime = targetTime - UNIX_EPOCH;
+
+            // 経過秒数に変換
+            return (long)elapsedTime.TotalMilliseconds;
         }
 
        

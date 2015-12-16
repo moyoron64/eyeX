@@ -18,3 +18,5 @@ C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsAppl
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\obj\Debug\Translator.Form1.resources
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\obj\Debug\Translator.Form2.resources
 C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\obj\Debug\Translator.Properties.Resources.resources
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\bin\Debug\MathNet.Numerics.dll
+C:\Users\s175022\Desktop\TobiiEyeXSdk-DotNet-1.5.466 (2)\source\WindowsFormsApplication1\bin\Debug\MathNet.Numerics.xml
