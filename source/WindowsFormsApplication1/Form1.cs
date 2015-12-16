@@ -155,7 +155,7 @@ namespace Translator
 		    timer1.Enabled = true;
             timer2.Interval = 10000;
             timer2.Enabled = true;
-            webBrowser1.Navigate("http://com.center.wakayama-u.ac.jp/~s175022/englishTest10.html");
+            webBrowser1.Navigate("http://com.center.wakayama-u.ac.jp/~s175022/englishTest11.html");
             _eyeXHost.Start();
             stream = _eyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
             stream2 = _eyeXHost.CreateEyePositionDataStream();
@@ -577,7 +577,7 @@ namespace Translator
         private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
         {
 
-            wb.SaveAs("test1");
+            wb.SaveAs("test2");
             wb.Close(false);
             ExcelApp.Quit();
 
