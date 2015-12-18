@@ -64,8 +64,9 @@ namespace Translator
 
         private int allDanger = 0;
 
-        private String[] wordBox ={"Vitamin","C","plays","an","important","role","in","keeping","us","healthy.","Most","mammals","produce","it","in","their","livers,","so","they","never","suffer","from","a","lack","of","it.","Curiously,","however,","some","mammals,","such","as","humans","and","apes,","cannot","do","so.","What","happens","when","you","lack","this","important","vitamin?","You","might","see","blac-and-blue","marks","on","your","skin.","You","teeth","could","suffer,","too:","the","pink","area","around","them","might","become","soft","and","bleed","easily.","These","are","just","a","couple","of","good","reasons","to","eat","plenty","of","fresh","fruit."};
+        private String[] wordBox ={"Vitamin","C","plays","an","important","role","in","keeping","us","healthy.","Most","mammals","produce","it","in","their","livers,","so","they","never","suffer","from","a","lack","of","it.","Curiously,","however,","some","mammals,","such","as","humans","and","apes,","cannot","do","so.","What","happens","when","you","lack","this","important","vitamin?","You","might","see","black-and-blue","marks","on","your","skin.","You","teeth","could","suffer,","too:","the","pink","area","around","them","might","become","soft","and","bleed","easily.","These","are","just","a","couple","of","good","reasons","to","eat","plenty","of","fresh","fruit."};
         private String[] wordChangeBox = { "ビタミン", "C", "働く", "ひとつの", "重要な", "役割", "の中で", "保つ", "私達", "健康", "ほとんどの", "哺乳類", "作る", "それ", "のなかで", "それらの", "肝臓", "だから", "それらは", "決してない", "引き起こす", "から", "ひとつの", "不足", "～の", "それ", "奇妙なことに", "しかし", "いくらかの", "哺乳類は", "その", "ような", "人間", "そして", "類人猿", "できない", "する", "そのように", "何が", "起きる", "～とき", "あなたが", "不足する", "この", "重要な", "ビタミン", "あなたは", "かもしれない", "みる", "黒と青", "あざ", "～で", "あなたの", "肌", "あなたの", "歯", "かもしれない", "害をうける", "～も", "（冠詞）", "ピンク", "場所", "周辺", "それら", "かもしれない", "＝になる", "やわらかく", "そして", "出血する", "簡単に", "それらが", "～です", "ただ", "一組の", "二つ", "～の", "正当な", "理由", "～のため", "食べる", "たくさん", "～の", "新鮮な", "果実" };
+        private String[] wordBox2 = { "The", "word", "\"drug\"", "means", "anything", "that,", "even", "in", "small", "amounts", "produces", "changes", "in", "the", "body,", "the", "mind,", "or", "both.", "This", "definition,", "however,", "does", "not", "clearly", "separate", "drugs", "from", "what", "we", "usually", "think", "of", "as", "food.", "The", "difference", "between", "a", "drug", "and", "a", "poison", "is", "also", "unclear.", "All", "drugs", "become", "poisons", "in", "large", "amounts,", "and", "many", "poisons", "are", "useful", "drugs", "in", "carefully", "controlled", "amounts.", "Is", "alcohol,", "for", "instance,", "a", "food,", "a", "drug,", "or", "a", "poison?", "It", "can", "be", "any", "of", "the", "three,", "depending", "on", "how", "we", "use", "it." };
 
         Worksheet ws1;
         Workbook wb;
@@ -130,6 +131,30 @@ namespace Translator
             rgn.Value2 = "首の傾き";
             rgn = ws1.Cells[excelCount, 3];
             rgn.Value2 = "画面距離";
+            rgn = ws1.Cells[excelCount, 4];
+            rgn.Value2 = "視線先の単語";
+            rgn = ws1.Cells[excelCount, 5];
+            rgn.Value2 = "瞬き判定";
+            rgn = ws1.Cells[excelCount, 6];
+            rgn.Value2 = "タイムコード";
+            rgn = ws1.Cells[excelCount, 7];
+            rgn.Value2 = "視線位置X座標";
+            rgn = ws1.Cells[excelCount, 8];
+            rgn.Value2 = "視線位置Y座標";
+            rgn = ws1.Cells[excelCount, 9];
+            rgn.Value2 = "主観的難易度推定";
+            rgn = ws1.Cells[excelCount, 10];
+            rgn.Value2 = "瞬目からの推定";
+            rgn = ws1.Cells[excelCount, 11];
+            rgn.Value2 = "首の傾き分散からの推定";
+            rgn = ws1.Cells[excelCount, 12];
+            rgn.Value2 = "画面距離分散からの推定";
+            rgn = ws1.Cells[excelCount, 13];
+            rgn.Value2 = "首の傾きの分散";
+            rgn = ws1.Cells[excelCount, 14];
+            rgn.Value2 = "画面距離の分散";
+
+         
 
 
             this.listBox2.Visible = false;
@@ -155,7 +180,7 @@ namespace Translator
 		    timer1.Enabled = true;
             timer2.Interval = 10000;
             timer2.Enabled = true;
-            webBrowser1.Navigate("http://com.center.wakayama-u.ac.jp/~s175022/englishTest11.html");
+            webBrowser1.Navigate("http://com.center.wakayama-u.ac.jp/~s175022/englishTest15.html");
             _eyeXHost.Start();
             stream = _eyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
             stream2 = _eyeXHost.CreateEyePositionDataStream();
@@ -244,7 +269,7 @@ namespace Translator
                             tb.Top = (int)gazeY+21;
                             tb.Left = (int)gazeX;
                             tb.Height = 10;
-                            tb.Width = 60;
+                            tb.Width = 70;
                             this.Controls.Add(tb);
 
                             
